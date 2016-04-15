@@ -1,5 +1,5 @@
 # Projet-Java
-[Experimentation] Projet Java dans le cadre de la licence STRI
+######[Experimentation] Projet Java dans le cadre de la licence STRI
 
-Membres du projet : 
-Fredéric FERRERA, Samuel GARCIA, Alexis GARDAVOIR & Saidharan SARMA
+###Membres du projet 
+>Fredéric FERRERA, Samuel GARCIA, Alexis GARDAVOIR & Saidharan SARMA
