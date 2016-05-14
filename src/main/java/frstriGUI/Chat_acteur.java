@@ -1,5 +1,10 @@
 package frstriGUI;
 
+import static java.awt.event.KeyEvent.VK_ENTER;
+import java.util.ArrayList;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -29,16 +34,6 @@ public class Chat_acteur extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane6 = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
         jTextField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane10 = new javax.swing.JScrollPane();
@@ -49,6 +44,9 @@ public class Chat_acteur extends javax.swing.JFrame {
         jTextArea14 = new javax.swing.JTextArea();
         jScrollPane15 = new javax.swing.JScrollPane();
         jTextArea15 = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -57,44 +55,14 @@ public class Chat_acteur extends javax.swing.JFrame {
 
         jTabbedPane6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jTabbedPane6.addTab("Room 1", jScrollPane1);
-
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jTabbedPane6.addTab("Room 2", jScrollPane2);
-
-        jTextArea3.setEditable(false);
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
-
-        jTabbedPane6.addTab("Room 3", jScrollPane3);
-
-        jTextArea4.setEditable(false);
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
-
-        jTabbedPane6.addTab("Room 4", jScrollPane4);
-
-        jTextArea5.setEditable(false);
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jScrollPane5.setViewportView(jTextArea5);
-
-        jTabbedPane6.addTab("Room 5", jScrollPane5);
-
         jTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldActionPerformed(evt);
+            }
+        });
+        jTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyPressed(evt);
             }
         });
 
@@ -111,7 +79,7 @@ public class Chat_acteur extends javax.swing.JFrame {
         jTextArea10.setColumns(5);
         jTextArea10.setRows(5);
         jTextArea10.setTabSize(5);
-        jTextArea10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Connecté", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Linux Libertine G", 1, 14), new java.awt.Color(0, 102, 0))); // NOI18N
+        jTextArea10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Connecté(s)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Linux Libertine G", 1, 14), new java.awt.Color(0, 102, 0))); // NOI18N
         jTextArea10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane10.setViewportView(jTextArea10);
 
@@ -121,7 +89,7 @@ public class Chat_acteur extends javax.swing.JFrame {
         jTextArea12.setColumns(5);
         jTextArea12.setRows(5);
         jTextArea12.setTabSize(5);
-        jTextArea12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Spectateur", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Linux Libertine G", 1, 14), new java.awt.Color(51, 51, 51))); // NOI18N
+        jTextArea12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Spectateur(s)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Linux Libertine G", 1, 14), new java.awt.Color(51, 51, 51))); // NOI18N
         jScrollPane12.setViewportView(jTextArea12);
 
         jScrollPane14.setPreferredSize(new java.awt.Dimension(166, 80));
@@ -139,8 +107,29 @@ public class Chat_acteur extends javax.swing.JFrame {
         jTextArea15.setColumns(5);
         jTextArea15.setRows(5);
         jTextArea15.setTabSize(5);
-        jTextArea15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Non connecté", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Linux Libertine G", 1, 14), new java.awt.Color(153, 0, 0))); // NOI18N
+        jTextArea15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Non connecté(s)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Linux Libertine G", 1, 14), new java.awt.Color(153, 0, 0))); // NOI18N
         jScrollPane15.setViewportView(jTextArea15);
+
+        jButton2.setText("Rafraïchir");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jButton3.setText("Ajout");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        jButton4.setText("Enlever");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,13 +137,20 @@ public class Chat_acteur extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 743, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTabbedPane6))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addComponent(jButton4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,7 +164,12 @@ public class Chat_acteur extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPane6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3)
+                            .addComponent(jButton4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,89 +182,95 @@ public class Chat_acteur extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                        .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(32, 32, 32))))
         );
 
         pack();
     }// </editor-fold>                        
 
+    private void addScroll(){
+                
+        javax.swing.JTextArea j = new javax.swing.JTextArea(); /* Création du contenu */
+        javax.swing.JScrollPane k = new javax.swing.JScrollPane(); /* Création onglet */
+        j.setEditable(false); /* On empeche l'utilisateur de pouvoir directement modifier la fenetre */
+        j.setColumns(20);
+        j.setRows(5);
+        
+        k.setViewportView(j);
+
+        indexOnglet++; /* Incrémentation de l'onglet */
+        onglet.add(k); /* Ajout à l'array list */
+        contenuOnglet.add(j); /* Ajout à l'array list */
+        
+        jTabbedPane6.addTab("Room" + indexOnglet, onglet.get(indexOnglet)); /* On nomme la fenetre et on l'ajoute au jTabbedPane */
+    }
+    
+    private void deleteScroll(){
+        if(indexOnglet > -1){ /* Controle de la position de l'index */
+            onglet.remove(indexOnglet); /* On enleve l'onglet de l'Array List */
+            contenuOnglet.remove(indexOnglet); /* On enleve le contenu de l'Array List */
+            jTabbedPane6.remove(indexOnglet); /* On l'enleve aussi du jTabbedPane */
+            indexOnglet--; /* On décrémente l'index */
+        }
+    }
+    
+    private void envoyer(){
+        /* Si le texte que l'utilisateur n'est pas vide, on envoie */
+        if(!jTextField.getText().isEmpty()){
+            /* Création du message */
+            LocalMessage l = new LocalMessage();
+            l.setAuthor("Alexis"); /* Ajout de l'auteur */
+            l.setText(jTextField.getText()); /* Ajout du texte depuis la zone de saisie */
+
+            jTextField.setText(""); /*On vide la zone de saisie */
+            
+            if(!contenuOnglet.get(jTabbedPane6.getSelectedIndex()).getText().isEmpty()){ /* Si il y a du contenu */
+                contenuOnglet.get(jTabbedPane6.getSelectedIndex()).setText(contenuOnglet.get(jTabbedPane6.getSelectedIndex()).getText() + "\n" +  l.getAuthor() + " : " + l.getText());
+            }
+            else {
+                contenuOnglet.get(jTabbedPane6.getSelectedIndex()).setText(l.getAuthor() + " : " + l.getText());
+            }            
+        }
+    }
+    
+    
+    
+    private void rafraichir(){
+        /* On tire depuis la base de donnée */
+    }
+    
     private void jTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         
     }                                          
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        
-        /* Si le texte que l'utilisateur n'est pas vide, on envoie */
-        if(!jTextField.getText().isEmpty()){
-            /* Création du message */
-            LocalMessage l = new LocalMessage();
-            l.setAuthor("Alexis");
-            l.setText(jTextField.getText());
-            
-
-            /* Utiliser un pointeur pour le jTextArea !*/
-
-            jTextField.setText("");
-
-            System.out.println(jTabbedPane6.getSelectedComponent().toString());
-            System.out.println(jTabbedPane6.getSelectedIndex());
-            if(jTabbedPane6.getSelectedIndex() == 0)
-                System.out.println("WESH");
-            if(jTabbedPane6.getSelectedIndex() == 1)
-                System.out.println("WESH2");
-            
-            switch(jTabbedPane6.getSelectedIndex()){
-                case 0:
-                    if(!jTextArea1.getText().isEmpty()) /*Si le text de l'area n'est pas vide*/
-                        jTextArea1.setText(jTextArea1.getText() + "\n" +  l.getAuthor() + " : " + l.getText());
-                    else
-                        jTextArea1.setText(l.getAuthor() + " : " + l.getText());
-                    break;
-                case 1:
-                    if(!jTextArea2.getText().isEmpty()) /*Si le text de l'area n'est pas vide*/
-                        jTextArea2.setText(jTextArea2.getText() + "\n" +  l.getAuthor() + " : " + l.getText());
-                    else
-                        jTextArea2.setText(l.getAuthor() + " : " + l.getText());
-                    break;
-                    
-                case 2:
-                    if(!jTextArea3.getText().isEmpty()) /*Si le text de l'area n'est pas vide*/
-                        jTextArea3.setText(jTextArea3.getText() + "\n" +  l.getAuthor() + " : " + l.getText());
-                    else
-                        jTextArea3.setText(l.getAuthor() + " : " + l.getText());
-                    break;
-                    
-                case 3:
-                    if(!jTextArea4.getText().isEmpty()) /*Si le text de l'area n'est pas vide*/
-                        jTextArea4.setText(jTextArea4.getText() + "\n" +  l.getAuthor() + " : " + l.getText());
-                    else
-                        jTextArea4.setText(l.getAuthor() + " : " + l.getText());
-                    break;
-                    
-                case 4:
-                    if(!jTextArea5.getText().isEmpty()) /*Si le text de l'area n'est pas vide*/
-                        jTextArea5.setText(jTextArea5.getText() + "\n" +  l.getAuthor() + " : " + l.getText());
-                    else
-                        jTextArea5.setText(l.getAuthor() + " : " + l.getText());
-                    break;
-            }
-            
-            //System.out.println(jTabbedPane6.getSelectedIndex());
-            
-            if(!jScrollPane1.isForegroundSet()){
-                if(!jTextArea1.getText().isEmpty()) /*Si le text de l'area n'est pas vide*/
-                    jTextArea1.setText(jTextArea1.getText() + "\n" +  l.getAuthor() + " : " + l.getText());
-                else
-                    jTextArea1.setText(l.getAuthor() + " : " + l.getText());
-            }
-        }
-            
-        
-
-            
+        /* Si l'utilisateur a cliqué sur le bouton ENVOYER, on envoie */
+        envoyer();
     }                                        
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        /* Si l'utilisateur a appuyé sur le bouton RAFRAICHIR, on rafraichit la zone de texte */
+        rafraichir();
+    }                                     
+
+    private void jTextFieldKeyPressed(java.awt.event.KeyEvent evt) {                                      
+        /* On envoie un message si l'utilisateur appuie sur ENTREE depuis la zone de saisie */
+        if(evt.getKeyCode() == VK_ENTER){
+            envoyer();
+        }
+    }                                     
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        /* Si l'utilisateur a appuyé sur le bouton AJOUT, on ajoute un onglet */
+        addScroll();
+    }                                     
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        /* Si l'utilisateur a appuyé sur le bouton ENLEVER, on retire un onglet */
+        deleteScroll();
+    }                                     
 
     /**
      * @param args the command line arguments
@@ -274,6 +281,7 @@ public class Chat_acteur extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -291,38 +299,40 @@ public class Chat_acteur extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Chat_acteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
             @Override
             public void run() {
+                
                 new Chat_acteur().setVisible(true);
                 
             }
+            
         });
+        
     }
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane6;
-    private static javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea10;
     private javax.swing.JTextArea jTextArea12;
     private javax.swing.JTextArea jTextArea14;
     private javax.swing.JTextArea jTextArea15;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextField jTextField;
     // End of variables declaration                   
+   
+    
+    private ArrayList<JScrollPane> onglet = new ArrayList();
+    private ArrayList<JTextArea> contenuOnglet = new ArrayList();
+    private int indexOnglet = -1;
 }
