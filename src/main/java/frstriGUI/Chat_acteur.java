@@ -67,7 +67,6 @@ public class Chat_acteur extends javax.swing.JFrame {
         jTextArea14 = new javax.swing.JTextArea();
         jScrollPane15 = new javax.swing.JScrollPane();
         jTextArea15 = new javax.swing.JTextArea();
-
         jFrame1.setTitle("bouh");
         jFrame1.setAlwaysOnTop(true);
         jFrame1.setBounds(new java.awt.Rectangle(50, 50, 300, 300));
