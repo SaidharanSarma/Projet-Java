@@ -107,6 +107,11 @@ public class Chat_acteur extends javax.swing.JFrame {
         });
 
         jTabbedPane6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTabbedPane6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane6MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Rafraïchir");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -667,7 +672,7 @@ public class Chat_acteur extends javax.swing.JFrame {
             
         }
         
-        rafraichirSalon();
+        doRefresh();
         
     }
     
@@ -698,7 +703,7 @@ public class Chat_acteur extends javax.swing.JFrame {
 
     private void jTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldMouseClicked
         // TODO add your handling code here:
-        rafraichirSalon();
+        doRefresh();
     }//GEN-LAST:event_jTextFieldMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -709,10 +714,72 @@ public class Chat_acteur extends javax.swing.JFrame {
     
     private void jPanel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseMoved
         // TODO add your handling code here:
-        rafraichirSalon();
-        cacherSaisie();
+        doRefresh();
     }//GEN-LAST:event_jPanel1MouseMoved
 
+    private void paintRefresh(){
+        /* Création de l'objet gérant les requêtes MySQL */
+        Statement s = null;
+        ResultSet r = null; 
+        int idSalon;
+        int j = 0; /* Variable de parcourt */
+
+        idSalon = salons.get(jTabbedPane6.getSelectedIndex());
+        
+        try {
+            s = c.createStatement();
+            r = s.executeQuery("SELECT couleur FROM SALONS WHERE idSalon like " + idSalon); /* On selectionne tout dans le salon */
+
+            if(r.next()){
+                switch(r.getString("couleur")){
+                    case "white":
+                        jPanel1.setBackground(Color.white);
+                        break;
+                    case "blue":
+                        jPanel1.setBackground(Color.blue);
+                        break;
+                    case "red":
+                        jPanel1.setBackground(Color.red);
+                        break;
+                    case "pink":
+                        jPanel1.setBackground(Color.pink);
+                        break;
+                    case "green":
+                        jPanel1.setBackground(Color.green);
+                        break;
+                    case "yellow":
+                        jPanel1.setBackground(Color.yellow);
+                        break;
+                    default:
+                        jPanel1.setBackground(Color.gray);
+                        break;
+                }
+            }
+                
+
+        } catch ( SQLException e ) {
+            System.out.println("funtion rafraichir() " + e);
+        } finally {
+            if ( r != null ) { /* fermeture resultset */
+                try {
+                    r.close();
+                } catch ( SQLException ignore ) {
+                }
+            }
+            if ( s != null ) { /* fermeture statement */
+                try {
+                    s.close();
+                } catch ( SQLException ignore ) {
+                }
+            }
+        }
+    }
+    
+    private void doRefresh(){
+        rafraichirSalon();
+        cacherSaisie();
+    }
+    
     private String remplaceThisIn(char toProtect, String data){
         String retour = "";
         
@@ -953,6 +1020,11 @@ public class Chat_acteur extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jTabbedPane6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane6MouseClicked
+        // TODO add your handling code here:
+        paintRefresh();
+    }//GEN-LAST:event_jTabbedPane6MouseClicked
 
     /**
      * @param args the command line arguments

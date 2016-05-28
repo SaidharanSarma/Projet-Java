@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -449,7 +448,6 @@ public class Chat_admin extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
@@ -546,13 +544,6 @@ public class Chat_admin extends javax.swing.JFrame {
             }
         });
 
-        jButton10.setText("COOOOO");
-        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton10MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -589,9 +580,7 @@ public class Chat_admin extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton10)
-                                    .addComponent(jTextField6))))
+                                .addComponent(jTextField6)))
                         .addGap(63, 63, 63))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -624,9 +613,7 @@ public class Chat_admin extends javax.swing.JFrame {
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton10)
-                .addGap(39, 39, 39))
+                .addGap(68, 68, 68))
         );
 
         jTextField1.getAccessibleContext().setAccessibleName("utCreerPseudo");
@@ -742,7 +729,7 @@ public class Chat_admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, Short.MAX_VALUE)
                 .addGap(93, 93, 93))
         );
 
@@ -769,7 +756,7 @@ public class Chat_admin extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "white", "blue", "red", "pink", "purple", "green", "yellow" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "white", "blue", "red", "pink", "green", "yellow" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -844,7 +831,7 @@ public class Chat_admin extends javax.swing.JFrame {
         jLabel39.setForeground(new java.awt.Color(170, 0, 0));
         jLabel39.setText("Si un champ reste vide, son attribut ne sera pas changé.");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "white", "blue", "red", "pink", "purple", "green", "yellow" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "white", "blue", "red", "pink", "green", "yellow" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox3ActionPerformed(evt);
@@ -1165,11 +1152,6 @@ public class Chat_admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
-    /* Engager connexion */
-    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
-        startConnection();
-    }//GEN-LAST:event_jButton10MouseClicked
-
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
     }//GEN-LAST:event_jTextField2ActionPerformed
 
@@ -1481,7 +1463,6 @@ public class Chat_admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

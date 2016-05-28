@@ -45,6 +45,7 @@ public class Chat_launcher extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iHear - Lanceur");
+        setResizable(false);
 
         textIdentifiant.setFont(new java.awt.Font("Linux Libertine G", 0, 14)); // NOI18N
         textIdentifiant.setText("Identifiant :");
@@ -52,6 +53,17 @@ public class Chat_launcher extends javax.swing.JFrame {
         textPassword.setFont(new java.awt.Font("Linux Libertine G", 0, 14)); // NOI18N
         textPassword.setText("Mot de passe : ");
 
+        textFieldId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textFieldPwdMouseClicked(evt);
+            }
+        });
+
+        textFieldPwd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textFieldPwdMouseClicked(evt);
+            }
+        });
         textFieldPwd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldPwdActionPerformed(evt);
@@ -67,6 +79,12 @@ public class Chat_launcher extends javax.swing.JFrame {
 
         textAdresse.setFont(new java.awt.Font("Linux Libertine G", 0, 14)); // NOI18N
         textAdresse.setText("Adresse du serveur :");
+
+        textFieldAdr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textFieldPwdMouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Linux Libertine G", 0, 36)); // NOI18N
         jLabel4.setText("iHear");
@@ -128,6 +146,7 @@ public class Chat_launcher extends javax.swing.JFrame {
 
     private void textFieldPwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPwdActionPerformed
         // TODO add your handling code here:
+        seConnecter();
     }//GEN-LAST:event_textFieldPwdActionPerformed
 
     private boolean startConnection(String adresse){
@@ -175,8 +194,6 @@ public class Chat_launcher extends javax.swing.JFrame {
         
     }
     
-    
-    
     private boolean cmpString(String cmp, String cmp2){
         boolean retour = true;
         
@@ -207,8 +224,7 @@ public class Chat_launcher extends javax.swing.JFrame {
         } 
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Si l'utilisateur appuie sur se connecter.
+    private void seConnecter(){
         boolean pass = false;
                 
         /* Si il a renseigné tout les champs */
@@ -268,7 +284,16 @@ public class Chat_launcher extends javax.swing.JFrame {
                 
             }
         }
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Si l'utilisateur appuie sur se connecter.
+        seConnecter();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void textFieldPwdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textFieldPwdMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldPwdMouseClicked
 
     /**
      * @param args the command line arguments
